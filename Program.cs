@@ -1,54 +1,43 @@
 ﻿using System;
 using static System.Console;
 
-namespace Delegate
+namespace Lambda
 {
-    public delegate void ShowLog(string message);
     class Program
     {
-        static void Info(string s)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(s);
-            Console.ResetColor();
-        }
 
-        static void Warning(string s)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(s);
-            Console.ResetColor();
-        }
-
-        static int Tong(int a, int b) => a + b;
         static void Main(string[] args)
         {
-            // ShowLog log = null;
+            // (int a, int b) =>
+            // {
+            //     int kq = a + b;
+            //     return kq;
+            // }
+            // Action<string> thongbao;
+            // thongbao = (string s) => Console.WriteLine(s);
 
-            // log += Info;
-            // log += Info;
-            // log += Info;
-            // log += Warning;
-            // log += Warning;
+            // for (int i = 0; i < 10; i++)
+            // {
+            //     thongbao?.Invoke("xin chao");
+            // }
 
-            // log?.Invoke("Xin chao");
 
-            // action
-
-            // Action action;
-            // Action<string> action2;
-
-            // action2 = Warning;
-            // action2 += Info;
-            // action2?.Invoke("Thong bao");
-            // Func<int> f1; //delegate int func()
+            // Action<string, string> welcome;
+            // welcome = (string msg, string name) => Console.WriteLine(msg + " " + name);
+            // welcome?.Invoke("xin chao", "cac ban");
+            // welcome?.Invoke("xinchao", "Nguyen van A");
 
             Func<int, int, int> tinhtoan;
-            int a = 5;
-            int b = 10;
 
-            tinhtoan = Tong;
-            Console.WriteLine($"KQ:  {tinhtoan(a, b)}");
+            tinhtoan = (a, b) =>
+            {
+                int kq = a + b;
+                return kq;
+            };
+
+            Console.WriteLine(tinhtoan.Invoke(5, 6));
+
+
         }
     }
 }
